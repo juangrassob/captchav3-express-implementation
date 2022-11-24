@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 - Node >v16
 
 ### Instalation
-1. [Get a recaptcha credential](https://www.google.com/recaptcha/about/)
+1. [Get a recaptcha v3 credentials](https://www.google.com/recaptcha/about/)
 2. Clone the repo
    ```sh
    git clone https://github.com/juangrassob/captchav3-express-implementation.git
