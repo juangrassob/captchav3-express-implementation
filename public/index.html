@@ -35,7 +35,7 @@
       </span>
     </div>
 
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcRvSsjAAAAAMmCr4NdLLW5GZfVwr82SjU4oR3f"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=site_key"></script>
     <script>
       function validateToken(token) {
         console.log(token)
@@ -56,7 +56,7 @@
       function onClick(e) {
         e.preventDefault();
         grecaptcha.ready(() => {
-          grecaptcha.execute('6LcRvSsjAAAAAMmCr4NdLLW5GZfVwr82SjU4oR3f', { action: 'submit' }).then(validateToken);
+          grecaptcha.execute('site_key', { action: 'submit' }).then(validateToken);
         });
       }
 
