@@ -11,9 +11,6 @@ These instructions will get you a copy of the project up and running on your loc
 - Node >v16
 
 ### Instalation
-
-Go to a terminal and clone the project.
-
 1. [Get a recaptcha credential](https://www.google.com/recaptcha/about/)
 2. Clone the repo
    ```sh
