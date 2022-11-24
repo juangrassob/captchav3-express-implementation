@@ -3,8 +3,7 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const axios = require('axios');
-const { Console } = require('console');
+const got = require('got');
 
 const app = express();
 
@@ -14,24 +13,16 @@ app.use(
   morgan('":method :url :status :res[content-length] - :response-time ms"')
 );
 
-app.use(express.static(path.resolve(__dirname, 'frontend')));
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/captcha', async (req, res) => {
   const secret_key = process.env.CAPTCHA_SECRET_KEY;
   const token = req.body.token;
   const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${token}`;
 
-  const config = {
-    method: 'POST',
-    url,
-  };
+  const data = await got.post(url).json();
 
-  console.log(token);
-
-  // const response = await axios(config);
-  // console.log(response.data);
-
-  return res.status(200).json({ success: true });
+  return res.status(200).json({ success: data.success });
 });
 
 module.exports = app;
