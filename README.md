@@ -23,9 +23,10 @@ Go to a terminal and clone the project.
    ```sh
    npm install
    ```
-4. Enter your API in `.env`
+4. Enter your CATCHA_SECRET  and APP_PORT in `.env`
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   APP_PORT=3001
+   CATCHA_SECRET=123
    ```
 5. Replace you site key /public/index.html
 
