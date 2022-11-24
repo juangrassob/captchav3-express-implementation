@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reCaptcha v3</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href=" /style.css">
+  <link rel="shortcut icon" href="/favicon.png">
+</head>
+
+<body>
+
+  <div class="back">
+    <div class="div-center">
+      <div class="content">
+        <h3>Login</h3>
+        <hr />
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="submit">Login</button>
+          <hr />
+        </form>
+      </div>
+      </span>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcRvSsjAAAAAMmCr4NdLLW5GZfVwr82SjU4oR3f"></script>
+    <script>
+      function validateToken(token) {
+        console.log(token)
+
+        fetch('/captcha', {
+          method: 'post',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ token })
+        })
+          .then(response => response.json())
+          .then(data => console.log(data));
+      }
+
+
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(() => {
+          grecaptcha.execute('6LcRvSsjAAAAAMmCr4NdLLW5GZfVwr82SjU4oR3f', { action: 'submit' }).then(validateToken);
+        });
+      }
+
+      document.getElementById("submit").addEventListener('click', onClick);
+
+
+    </script>
+</body>
+
+</html>
